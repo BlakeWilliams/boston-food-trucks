@@ -1,10 +1,11 @@
 const today = new Date().toLocaleDateString(undefined, { weekday: "long" });
 const allMarkers = [];
+let map;
 
 document.addEventListener(
   "DOMContentLoaded",
   function () {
-    var map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-71.0675, 42.3555],
@@ -21,7 +22,9 @@ document.addEventListener(
       allMarkers.push(marker);
 
       const link = document.querySelector(`[data-location="${key}"]`);
-      link.addEventListener("click", () => {});
+      link.addEventListener("click", () => {
+        onLocationClick(marker, latlng);
+      });
 
       const popup = createPopup(trucks);
       marker.setPopup(popup);
