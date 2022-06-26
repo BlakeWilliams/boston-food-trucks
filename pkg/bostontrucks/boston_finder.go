@@ -11,29 +11,20 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
-const ScheduleURL = "https://www.boston.gov/departments/small-business-development/city-boston-food-trucks-schedule"
-
-type LatLng = struct {
-	Lat float64
-	Lng float64
-}
-
-type Truck struct {
-	Name         string
-	Neighborhood string
-	Location     string
-	Schedule     map[string]string
-	LatLng       LatLng
-	URL          string
-}
-
-var latLngRegexp = regexp.MustCompile(`maps/@(-?[0-9.]+),(-?[0-9.]+),`)
-
 // There's sometimes an invisible character instead of a space, so we need to
 // account for it
 var truckDetailsRegexp = regexp.MustCompile(`(.*?),\s+(.*?):[\s*| ]*(.*)`)
+var latLngRegexp = regexp.MustCompile(`maps/@(-?[0-9.]+),(-?[0-9.]+),`)
 
-func TrucksByLocation() ([]Truck, error) {
+const bostonScheduleURL = "https://www.boston.gov/departments/small-business-development/city-boston-food-trucks-schedule"
+
+// BostonFinder is used to find structs provided by the boston.gov website
+type BostonFinder struct{}
+
+var _ TruckFinder = &BostonFinder{}
+
+// Returns trucks parsed from the boston.gov food truck page.
+func (*BostonFinder) Trucks() ([]Truck, error) {
 	res, err := http.Get("https://www.boston.gov/departments/small-business-development/city-boston-food-trucks-schedule")
 
 	if err != nil {
@@ -46,10 +37,10 @@ func TrucksByLocation() ([]Truck, error) {
 		return nil, fmt.Errorf("could not fetch trucks, received non-200 response code %d", res.StatusCode)
 	}
 
-	return ParseTrucksHTML(res.Body)
+	return parseBostonTrucksHTML(res.Body)
 }
 
-func ParseTrucksHTML(body io.Reader) ([]Truck, error) {
+func parseBostonTrucksHTML(body io.Reader) ([]Truck, error) {
 	doc, err := goquery.NewDocumentFromReader(body)
 	if err != nil {
 		return nil, fmt.Errorf("could not parse foodtruck page: %w", err)

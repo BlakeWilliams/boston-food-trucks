@@ -17,6 +17,12 @@ import (
 	"github.com/blakewilliams/medium/pkg/view"
 )
 
+const (
+	EnvProd        = "prod"
+	EnvDevelopment = "development"
+	EnvTest        = "test"
+)
+
 type Action struct {
 	router.Action
 	renderer *view.Renderer
@@ -29,9 +35,9 @@ func (a *Action) Render(name string, params map[string]any) {
 	}
 }
 
-func New() *router.Router[*Action] {
+func New(env string) *router.Router[*Action] {
 	r := router.New(func(a router.Action) *Action {
-		return &Action{Action: a, renderer: createRenderer()}
+		return &Action{Action: a, renderer: createRenderer(env)}
 	})
 
 	r.Use(rescue.Middleware(func(a router.Action, err error) {
@@ -43,8 +49,15 @@ func New() *router.Router[*Action] {
 		PathPrefix: "/static",
 	}))
 
+	var finder bostontrucks.TruckFinder = &bostontrucks.BostonFinder{}
+	if env == EnvTest {
+		finder = &bostontrucks.MockFinder{}
+	}
+
+	truckManager := bostontrucks.NewManager(finder)
+
 	r.Get("/", func(action *Action) {
-		trucks, err := bostontrucks.TrucksByLocation()
+		trucks, err := truckManager.Trucks()
 		if err != nil {
 			panic(err)
 		}
@@ -95,7 +108,7 @@ func New() *router.Router[*Action] {
 	return r
 }
 
-func createRenderer() *view.Renderer {
+func createRenderer(env string) *view.Renderer {
 	cwd, err := os.Getwd()
 	if err != nil {
 		panic(err)
@@ -112,9 +125,8 @@ func createRenderer() *view.Renderer {
 	})
 	err = renderer.AutoRegister()
 
-	if os.Getenv("MEDIUM_ENV") == "development" {
+	if env == EnvDevelopment {
 		renderer.HotReload = true
-
 	}
 
 	if err != nil {

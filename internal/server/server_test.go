@@ -12,7 +12,7 @@ func TestServer(t *testing.T) {
 	req := httptest.NewRequest(http.MethodGet, "/", nil)
 	res := httptest.NewRecorder()
 
-	server := New()
+	server := New(EnvTest)
 
 	server.ServeHTTP(res, req)
 

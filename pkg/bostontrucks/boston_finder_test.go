@@ -13,7 +13,7 @@ import (
 var examplePage []byte
 
 func TestTrucksByLocation(t *testing.T) {
-	trucks, err := ParseTrucksHTML(bytes.NewReader(examplePage))
+	trucks, err := parseBostonTrucksHTML(bytes.NewReader(examplePage))
 	require.NoError(t, err)
 
 	require.Len(t, trucks, 19)
