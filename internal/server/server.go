@@ -56,6 +56,10 @@ func New(env string) *router.Router[*Action] {
 
 	truckManager := bostontrucks.NewManager(finder)
 
+	r.Get("/status", func(action *Action) {
+		action.Write([]byte("OK"))
+	})
+
 	r.Get("/", func(action *Action) {
 		trucks, err := truckManager.Trucks()
 		if err != nil {
