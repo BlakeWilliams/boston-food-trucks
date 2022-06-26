@@ -1,0 +1,1080 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+    <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"06206dff86",applicationID:"449797348"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return s.recordSupportability("API/"+e+"/called"),o(t+e,[u.now()].concat(c(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(9),c=t(10),f=t("ee").get("tracer"),u=t("loader"),s=t(4),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",v=l+"ixn-";a(p,function(t,e){d[e]=i(l,e,!0,"api")}),d.addPageAction=i(l,"addPageAction",!0),d.setCurrentRouteName=i(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(v+"tracer",[u.now(),t,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw f.emit("fn-err",[arguments,this,t],n),t}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(v,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),s.recordSupportability("API/noticeError/called"),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],4:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[c,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",c="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:c},recordSupportability:r,recordCustom:i}},{}],5:[function(t,e,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=t(11);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],6:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(u&&u<r.startTime)return;var i=[r],o=a({});o&&i.push(o),l("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function c(t){if(t instanceof y&&!w){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=v.now()?n.fid=v.now()-e:e>v.offset&&e<=Date.now()?(e-=v.offset,n.fid=v.now()-e):e=v.now(),w=!0,l("timing",["fi",e,n])}}function f(t){"hidden"===t&&(u=v.now(),l("pageHide",[u]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var u,s,d,p,l=t("handle"),v=t("loader"),m=t(8),g=t(3),y=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){s=new PerformanceObserver(r);try{s.observe({entryTypes:["paint"]})}catch(h){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(h){}p=new PerformanceObserver(o);try{p.observe({type:"layout-shift",buffered:!0})}catch(h){}}if("addEventListener"in document){var w=!1,b=["click","keydown","mousedown","pointerdown","touchstart"];b.forEach(function(t){document.addEventListener(t,c,g(!1))})}m(f)}},{}],7:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}e.exports={agent:i,version:o,match:r}},{}],8:[function(t,e,n){function r(t){function e(){t(c&&document[c]?document[c]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(3);e.exports=r;var o,a,c;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",c="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",c="webkitVisibilityState")},{}],9:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],10:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],11:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var c=e(i),f=m(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[w[n]];return p&&p.push([b,n,r,c]),c}}function o(t,e){h[t]=m(t).concat(e)}function v(t,e){var n=h[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return h[t]||[]}function g(t){return p[t]=p[t]||i(n)}function y(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var h={},w={},b={on:o,addEventListener:o,removeEventListener:v,emit:n,get:g,listeners:m,context:e,buffer:y,abort:c,aborted:!1};return b}function o(t){return u(t,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=t("gos"),s=t(9),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!M++){var t=T.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(x,function(e,n){t[e]||(t[e]=n)});var n=a();c("mark",["onload",n+T.offset],null,"api"),c("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){c("mark",["domContent",a()+T.offset],null,"api")}var a=t(5),c=t("handle"),f=t(9),u=t("ee"),s=t(7),d=t(2),p=t(3),l=d.getConfiguration("ssl")===!1?"http":"https",v=window,m=v.document,g="addEventListener",y="attachEvent",h=v.XMLHttpRequest,w=h&&h.prototype,b=!1;NREUM.o={ST:setTimeout,SI:v.setImmediate,CT:clearTimeout,XHR:h,REQ:v.Request,EV:v.Event,PR:v.Promise,MO:v.MutationObserver};var E=""+location,x={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},O=h&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),T=e.exports={offset:a.getLastTimestamp(),now:a,origin:E,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(6),m[g]?(m[g]("DOMContentLoaded",o,p(!1)),v[g]("load",r,p(!1))):(m[y]("onreadystatechange",i),v[y]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var M=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],t)}c(n+"start",[o,a,f],s,u);try{return p=e.apply(a,o)}catch(v){throw c(n+"err",[o,a,v],s,u),v}finally{c(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)f=e[u],c=t[f],a(c)||(t[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!v||e){var c=v;v=!0;try{t.emit(n,r,o,e,a)}catch(f){i([f,n,r,o],t)}v=c}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function c(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function f(t,e,n){var r=t[e];t[e]=c(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(10),p="nr@original",l=Object.prototype.hasOwnProperty,v=!1;e.exports=r,e.exports.wrapFunction=c,e.exports.wrapInPlace=f,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+<link rel="canonical" href="https://www.boston.gov/departments/small-business-development/city-boston-food-trucks-schedule" />
+<link rel="shortlink" href="https://www.boston.gov/node/21311" />
+<meta name="generator" content="Drupal 9 (http://drupal.org)" />
+<meta name="description" content="Please check individual food truck social media accounts for schedule changes due to weather, mechanical issues, and more." />
+<link rel="apple-touch-icon" sizes="180x180" href="/themes/custom/bos_theme/images/apple-touch-icon.png" />
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="/themes/custom/bos_theme/images/apple-touch-icon-precomposed.png" />
+<meta property="og:site_name" content="Boston.gov" />
+<meta property="og:url" content="https://www.boston.gov/departments/small-business-development/city-boston-food-trucks-schedule" />
+<meta property="og:title" content="City of Boston food trucks schedule" />
+<meta property="og:description" content="Please check individual food truck social media accounts for schedule changes due to weather, mechanical issues, and more." />
+<meta property="og:image" content="https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png" />
+<meta property="og:image:url" content="https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png" />
+<meta property="og:image:secure_url" content="https://patterns.boston.gov/images/global/icons/seal_dark_1000x1000.png" />
+<meta property="og:updated_time" content="2022-06-02T15:20:10-04:00" />
+<meta property="article:published_time" content="2017-03-30T12:11:29-04:00" />
+<meta property="article:modified_time" content="2017-03-30T12:11:29-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@CityOfBoston" />
+<meta name="twitter:description" content="Please check individual food truck social media accounts for schedule changes due to weather, mechanical issues, and more." />
+<meta name="twitter:title" content="City of Boston food trucks schedule" />
+<meta name="twitter:site:id" content="124455872" />
+<meta name="twitter:creator" content="@CityOfBoston" />
+<meta name="twitter:creator:id" content="124455872" />
+<meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Article",
+            "headline": "City of Boston food trucks schedule",
+            "name": "City of Boston food trucks schedule",
+            "description": "\u003Cp class=\u0022supporting-text\u0022\u003EPlease check individual food truck social media accounts for schedule changes due to weather, mechanical issues, and more.\u003C/p\u003E",
+            "image": {
+                "@type": "ImageObject",
+                "url": "https://patterns.boston.gov/images/global/icons/b-logo-large.png"
+            },
+            "datePublished": "\u003Ctime datetime=\u00222019-11-27T00:00:00Z\u0022\u003EWed, 11/27/2019 - 12:00am\u003C/time\u003E",
+            "dateModified": "Thu, 06/02/2022 - 3:20pm",
+            "isAccessibleForFree": "True",
+            "author": {
+                "@type": "Organization",
+                "name": "City of Boston",
+                "logo": {
+                    "@type": "ImageObject",
+                    "representativeOfPage": "True",
+                    "url": "https://patterns.boston.gov/images/global/icons/b-logo-large.png"
+                }
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "City of Boston",
+                "logo": {
+                    "@type": "ImageObject",
+                    "representativeOfPage": "True",
+                    "url": "https://patterns.boston.gov/images/global/icons/b-logo-large.png"
+                }
+            }
+        },
+        {
+            "@type": "ImageObject",
+            "url": "https://patterns.boston.gov/images/global/icons/b-logo-large.png"
+        }
+    ]
+}</script>
+<meta class="swiftype" name="site-priority" data-type="integer" content="5" />
+<meta class="swiftype" name="type" data-type="enum" content="article" />
+<link rel="icon" href="/themes/custom/bos_theme/images/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="und" href="https://www.boston.gov/departments/small-business-development/city-boston-food-trucks-schedule" />
+<script src="/sites/default/files/googletag/google_tag/default_gtm/google_tag.script.js?re1lnq" defer></script>
+<style>.ph-p-m {background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_a_mobile_1x/public/img/maps/map-background-image-map.jpg?itok=SGmjUEx0);
+    background-size: cover !important;}
+@media screen and (min-width: 0px) and (max-width: 419px) and (-webkit-min-device-pixel-ratio: 1.5) {
+    .ph-p-m { background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_b_tablet_1x/public/img/maps/map-background-image-map.jpg?itok=lJCsRs_b); } }
+@media screen and (min-width: 0px) and (max-width: 419px) {
+    .ph-p-m { background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_a_mobile_1x/public/img/maps/map-background-image-map.jpg?itok=SGmjUEx0); } }
+@media screen and (min-width: 0px) and (max-width: 419px) and (-webkit-min-device-pixel-ratio: 2) {
+    .ph-p-m { background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_c_desktop_1x/public/img/maps/map-background-image-map.jpg?itok=OR8MMEyl); } }
+@media screen and (min-width: 420px)  and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 1.5) {
+    .ph-p-m { background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_c_desktop_1x/public/img/maps/map-background-image-map.jpg?itok=OR8MMEyl); } }
+@media screen and (min-width: 420px)  and (max-width: 767px) {
+    .ph-p-m { background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_b_tablet_1x/public/img/maps/map-background-image-map.jpg?itok=lJCsRs_b); } }
+@media screen and (min-width: 420px)  and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2) {
+    .ph-p-m { background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_d_large_1x/public/img/maps/map-background-image-map.jpg?itok=z4I82UX_); } }
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    .ph-p-m { background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_c_desktop_1x/public/img/maps/map-background-image-map.jpg?itok=OR8MMEyl); } }
+@media screen and (min-width: 1440px) and (max-width: 1919px) {
+    .ph-p-m { background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_d_large_1x/public/img/maps/map-background-image-map.jpg?itok=z4I82UX_); } }
+@media screen and (min-width: 1920px) {
+    .ph-p-m { background-image: url(https://www.boston.gov/sites/default/files/styles/photo_bleed_e_oversize_1x/public/img/maps/map-background-image-map.jpg?itok=s5rCiz52); } }.ph-p-m {background-color: #288be4; background-blend-mode: screen;}</style>
+
+    <title>City of Boston food trucks schedule | Boston.gov</title>
+    <link rel="stylesheet" media="all" href="/sites/default/files/css/css_33Bqhb6AlFOL0taf3ZLkwcFP4R5LKg6FxibjLHWU-cs.css" />
+
+<!--[if lte IE 9]><!-->
+<link rel="stylesheet" media="all" href="https://patterns.boston.gov/css/public.css?abc" />
+<!--<![endif]-->
+
+<!--[if lte IE 9]><!-->
+<link rel="stylesheet" media="all" href="https://patterns.boston.gov/css/patterns-cob-theme.css" />
+<!--<![endif]-->
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_VDZ4lzrEffzI_HpH7QpmMyMbvzUBo98B56w_kXOPxQo.css" />
+
+<!--[if lt IE 10]>
+<link rel="stylesheet" media="all" href="https://patterns.boston.gov/css/ie.css" />
+<![endif]-->
+
+    <script src="/core/assets/vendor/modernizr/modernizr.min.js?v=3.11.7"></script>
+<script src="/core/misc/modernizr-additional-tests.js?v=3.11.7"></script>
+
+    <meta name="google-site-verification" content="Do93qJZE2c5ibJnBWowjyjeIzVD6he_ZSCJU2J6eHn8" />
+  </head>
+  <body class="html bos_theme not-front not-logged-in node-published page-node-21311 page-node node-type-article">
+
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKGRDS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<input type="checkbox" id="brg-tr" class="brg-tr" aria-hidden="true" />
+
+<!-- ADA Skip Nav -->
+<div class="sw-skipnav-outerbar">
+  <a href="#content" id="skipLink" class="sw-skipnav" data-swiftype-index="false" tabindex="0" >Skip to Main Content</a>
+</div>
+
+<nav class="nv-m">
+  <div class="nv-m-h">
+    <div class="nv-m-h-ic">
+      <a href="/" title="Go to home page">
+        <img src="https://patterns.boston.gov/images/b-dark.svg" alt="City of Boston" aria-hidden="true" class="nv-m-h-i" />
+      </a>
+    </div>
+    <div id="nv-m-h-t" class="nv-m-h-t">&nbsp;</div>
+  </div>
+  <div class="nv-m-c">
+    <nav role="navigation" aria-labelledby="block-mainmenu-menu" id="block-mainmenu" data-block-plugin-id="menu_block:main">
+            
+  <div class="visually-hidden" id="block-mainmenu-menu">Main menu</div>
+  
+
+        
+
+                            <ul class="nv-m-c-l">
+                                                                  <li class="nv-m-c-l-i is-l leaf first menu-mlid-763366 nv-m-c-a--y">
+                            <a href="http://www.cityofboston.gov/311/" title="" class="nv-m-c-a mv-m-c-a--p three-one-one">Help / 311</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-i is-l leaf menu-mlid-210101">
+                            <a href="/homepage-bostongov" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/21">Home</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-i is-l leaf menu-mlid-171721">
+                            <a href="/guides" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/841">Guides to Boston</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-i is-l leaf menu-mlid-171726">
+                            <a href="/departments" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/1796">Departments</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-i is-l leaf menu-mlid-1675906">
+                            <a href="/public-notices" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/11666">Public Notices</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-i is-l leaf menu-mlid-2354776">
+                            <a href="/pay-and-apply" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/32906">Pay and apply</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-i is-l leaf menu-mlid-2354781">
+                            <a href="/career-center" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/19261">Jobs and careers</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-i is-l leaf menu-mlid-885866">
+                            <a href="/events" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/1426">Events</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-i is-l leaf menu-mlid-202946">
+                            <a href="/news" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/1401">News</a>
+                            </li>
+                                                          <li class="nv-m-c-l-i is-e expanded menu-mlid-171731">
+                <a href="#" title="Click to expand Places menu" class="nv-m-c-a mv-m-c-a--p nolink nolink--a ">Places</a>
+                                                              <ul class="nv-m-c-l-l">
+            <li class="nv-m-c-bc"><button class="nv-m-c-b">Back</button></li>
+                                                                  <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="/cemeteries" title="" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/33006">Cemeteries</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="/community-centers" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/32886">Community centers</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="https://www.boston.gov/departments/landmarks-commission#historic-districts" title="" class="nv-m-c-a mv-m-c-a--p">Historic Districts</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="https://www.bpl.org/" title="" class="nv-m-c-a mv-m-c-a--p">Libraries</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="/neighborhoods" title="" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/33066">Neighborhoods</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="/parks-and-playgrounds" title="" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/32946">Parks and playgrounds</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="http://www.bostonpublicschools.org/Page/628" title="" class="nv-m-c-a mv-m-c-a--p">Schools</a>
+                            </li>
+                            </ul>
+    
+                              </li>
+                                                          <li class="nv-m-c-l-i is-e expanded menu-mlid-171741">
+                <a href="#" title="Click to expand Government menu" class="nv-m-c-a mv-m-c-a--p nolink nolink--a ">Government</a>
+                                                              <ul class="nv-m-c-l-l">
+            <li class="nv-m-c-bc"><button class="nv-m-c-b">Back</button></li>
+                                                                  <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="/departments/mayors-office" title="" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/176">The Mayor&#039;s Office</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="/departments/city-clerk" title="" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/136">City Clerk</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="https://www.boston.gov/departments/city-council" class="nv-m-c-a mv-m-c-a--p">City Council</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="/departments/election" title="" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/131">Elections</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="https://www.boston.gov/civic-engagement/boards-and-commissions" title="" class="nv-m-c-a mv-m-c-a--p">Boards and commissions</a>
+                            </li>
+                                                                      <li class="nv-m-c-l-l-i is-l leaf ">
+                            <a href="/departments/311/city-boston-government" class="nv-m-c-a mv-m-c-a--p" data-drupal-link-system-path="node/28101">City government overview</a>
+                            </li>
+                            </ul>
+    
+                              </li>
+                                                                      <li class="nv-m-c-l-i is-l leaf menu-mlid-2356706 last">
+                            <a href="mailto:311supervisors@boston.gov" title="Need help? You can send an email to BOS:311 for non-emergency services through the feedback form below." class="nv-m-c-a mv-m-c-a--p">Feedback</a>
+                            </li>
+                            </ul>
+    
+
+
+  </nav>
+
+
+  </div>
+</nav>
+
+<div id="page" class="mn page--wa sa" data-target="21311">
+  <input type="checkbox" id="s-tr" class="s-tr" aria-hidden="true">
+
+  <header id="main-menu" class="h" role="banner" data-swiftype-index="false">
+    <label for="brg-tr" class="brg-b" tabindex="0">
+  <span class="brg">
+    <span class="brg-c">
+      <span class="brg-c-i"></span>
+    </span>
+    <span class="brg-t"><span class="a11y--h">Toggle </span>Menu</span>
+  </span>
+</label>
+
+          <div class="lo lo--abs">
+      <div class="lo-l lo-b-cont">
+        <a href="/" id="logoImg">
+          <img src="https://patterns.boston.gov/images/public/logo.svg?re1lnq" alt="Boston.gov" class="lo-i" />
+        </a>
+                  <span class="lo-t"><a href="/mayor">Mayor Michelle Wu</a></span>
+              </div>
+    </div>
+
+    <a id="seal" href="/" title="Homepage | City of Boston Seal" rel="home" class="s">
+  <img src="https://patterns.boston.gov/images/public/seal.svg?re1lnq" alt="City of Boston Seal" class="s-i" />
+</a>
+
+    <nav class="nv-h">
+    <ul class="nv-h-l">
+        
+        
+                    <li class="nv-h-l-i">
+                <a href="/pay-and-apply" title="" class="nv-h-l-a" data-drupal-link-system-path="node/32906">Pay and apply</a>
+            </li>
+                    <li class="nv-h-l-i">
+                <a href="/public-notices" title="" class="nv-h-l-a" data-drupal-link-system-path="node/11666">Public notices</a>
+            </li>
+                    <li class="nv-h-l-i">
+                <a href="mailto:311supervisors@boston.gov" title="Need help? You can send an email to BOS:311 for non-emergency services through the feedback form below." class="nv-h-l-a">Feedback</a>
+            </li>
+                      <li id="targetLanguage" class="nv-h-l-i translate">
+          <a id="cob_translate" href="#translate" title="Translate" class="nv-h-l-a nv-h-l-a--k translate-link">
+            Translate
+          </a>
+          <div id="overlay" class="translate-overlay"></div>
+          <div id="overlay-background" class="translate-overlay-background"></div>
+        </li>
+              <li class="nv-h-l-i">
+            <label for="s-tr" title="Search" class="nv-h-l-a nv-h-l-a--k nv-h-l-a-ic" id="searchIcon" tabindex="0">
+                <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 41"><title>Search</title>
+                    <path class="nv-h-l-a-i"
+                          d="M24.2.6C15.8.6 9 7.4 9 15.8c0 3.7 1.4 7.2 3.6 9.8L1.2 37c-.8.8-.8 2 0 2.8.4.4.9.6 1.4.6s1-.2 1.4-.6l11.5-11.5C18 30 21 31 24.2 31c8.4 0 15.2-6.8 15.2-15.2C39.4 7.4 32.6.6 24.2.6zm0 26.5c-6.2 0-11.2-5-11.2-11.2S18 4.6 24.2 4.6s11.2 5 11.2 11.2-5 11.3-11.2 11.3z" />
+                </svg>
+            </label>
+        </li>
+          </ul>
+</nav>
+
+    <div class="h-s">
+  <form class="sf" action="/search" accept-charset="UTF-8" method="get">
+    <input name="utf8" type="hidden" value="✓">
+    <div class="sf-i">
+      <input type="text" name="query" id="query" value="" placeholder="Search…" class="sf-i-f" autocomplete="off">
+      <label for="query" class="sf-i-l">Search</label>
+      <button class="sf-i-b">Search</button>
+    </div>
+  </form>
+</div>
+
+  </header>
+
+  
+
+            <div class="views-element-container d--n" data-block-plugin-id="views_block:site_alerts-block_site_alerts" id="sa">
+      <div><div class="js-view-dom-id-2217567ceee9707845e90954f881445ad2ed1feebe8b0f61c63cbd1f9be73cab">
+  
+  
+  
+
+  
+  
+  
+
+      <div><div role="article" about="/covid-19-information" class="node-13659646 node clearfix node-site-alert modstate-published b b--dark-blue b--fw" bos_context_type="Site Alert" id="sa-a">
+  <div class="b-c b-c--xsmv fyi--dark-blue">
+    <div class="fyi-c">
+                    <div class="fyi-t fyi-t--dark-blue">
+          <div>    <div class="field field-name-title-field field-type-text field-type-string field-label-hidden field-items">
+                <div>
+        COVID-19 information
+            </div>
+          </div>
+</div>
+        </div>
+            <div class="fyi-s fyi-s--dark-blue">/</div>
+      <div class="fyi-d fyi-d--dark-blue">            For the latest updates, please visit our coronavirus (COVID-19) website:
+      </div>
+            <div class="field field-name-field-external-link field-type-link field-label-hidden field-items">
+                <div>
+        <a href="https://www.boston.gov/government/cabinets/boston-public-health-commission/covid-19-boston" class="fyi-l lnk-e" target="_blank">COVID-19 information</a>
+            </div>
+          </div>
+
+
+
+    </div>
+  </div>
+  </div>
+</div>
+
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+
+    </div>
+  
+  
+  <div class="main">
+    <div class="container">
+
+      <section class="main-content" id="content" role="main">
+
+        
+
+       
+                
+
+        
+        
+        
+
+        
+              <div data-drupal-messages-fallback class="hidden"></div>  
+    
+      
+<div class="breadcrumb" data-swiftype-index="false">
+  <div data-block-plugin-id="system_breadcrumb_block">
+  
+    
+         <div id="breadcrumb" data-swiftype-index="false">
+      <nav class="brc" role="navigation" aria-labelledby="system-breadcrumb">
+         <div class="a11y--h"><span class="brc-t">You are here</span></div>
+         <ul class="brc-l">
+                           <li class="brc-l-i">
+                                       <a href="/">Home</a>
+                                    <span class="brc-s">  ›  </span>
+               </li>
+                           <li class="brc-l-i">
+                                       <a href="/departments">Departments</a>
+                                    <span class="brc-s">  ›  </span>
+               </li>
+                           <li class="brc-l-i">
+                                       <a href="/departments/small-business-development">Small Business Development</a>
+                                    <span class="brc-s">  ›  </span>
+               </li>
+                        <li class="brc-l-i">
+               City of Boston food trucks schedule
+            </li>
+         </ul>
+      </nav>
+   </div>
+
+  </div>
+
+</div>
+
+<div class="brc-lu">
+      Last updated:             <time datetime="2022-06-02T19:20:11Z">6/2/22</time>
+
+      
+  </div>
+
+<article typeof="sioc:Item foaf:Document" class="node-21311 node clearfix node-article modstate-published" bos_context_type="Article">
+  <div class="p-v400">
+      <div class="department-info-wrapper g">
+        <div class="column g--8">
+
+            
+
+                            <h1>City of Boston food trucks schedule</h1>
+            
+            
+
+                               <div class="intro-text supporting-text squiggle-border-bottom field field-name-field-intro-text field-type-text-long"><p>We have a map that features food trucks located in the City of Boston.</p>
+</div>
+
+            
+            <div class="sub-nav-trigger ssm-trigger drawer-trigger">
+    <div class="ssm-chevron">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26 18" style="enable-background:new 0 0 26 18;" xml:space="preserve">
+              <title>Toggle</title>
+        <path class="st0 icon-stroke" d="M13,17.7L0.5,2.7C0,2.1,0.1,1.2,0.7,0.6c0.6-0.5,1.6-0.4,2.1,0.2L13,13L23.2,0.8c0.5-0.6,1.5-0.7,2.1-0.2
+              c0.6,0.5,0.7,1.5,0.2,2.1L13,17.7z"></path>
+            </svg>
+    </div>
+    Page Sections
+  </div>
+  <nav class="topic-nav ssm ssm__left">
+    <a id="section-nav" title="Section Nav" class="sr-only sr-only-focusable">Section Nav</a>
+    <ul><li><a href="#food-trucks-map" class="scroll-link-js">Food Trucks Map</a></li><li><a href="#locations-by-neighborhood" class="scroll-link-js">Locations by neighborhood</a></li></ul>
+  </nav>
+
+            <div class="body">
+                                                
+  
+  <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+      <div class="field-items">
+          <div class="field-item even" property="content:encoded">
+            <p class="supporting-text">Please check individual food truck social media accounts for schedule changes due to weather, mechanical issues, and more.</p>
+
+          </div>
+      </div>
+  </div>
+
+  
+
+            </div>
+
+        </div>
+
+        <div class="column g--4">
+          <ul class="sb">
+                        <li class="sb-i">
+              <div class="contact-info">
+                <div>Still have questions? Contact:</div>
+                  
+
+<span class="field field-name-field-contact field-type-entityreference field-label-hidden">
+  	
+      <div class="field field-name-field-department-profile field-type-entity-reference field-label-hidden field-items">
+                <div>
+        
+
+<div class="article-contact">
+  <h5 class="contact-title">
+    <a href="/departments/small-business-development">Small Business Development</a>
+  </h5>
+  <ul class="sb">
+          <li class="list-item sb-i">
+            <div class="field field-name-field-phone-number field-type-text field-type-string field__items">
+
+    
+<div class="detail-item detail-item--middle detail-item__field_phone_number">
+  <div class="detail-item__left">
+        <img src="https://patterns.boston.gov/images/global/icons/icon-phone.svg"  class="icon icon-phone sb-ic" alt="" />
+    </div>
+
+                        <div>
+                    <div class="detail-item__content">
+                <div class="detail-item__body detail-item__body--secondary">
+                  <span class="sb-d"><a href="tel:617-635-0355">617-635-0355</a></span>
+                </div>
+            </div>
+                    </div>
+            </div>
+
+    </div>
+
+      </li>
+              <li class="list-item sb-i">
+            <div class="field field-name-field-email field-type-text field-type-string field__items">
+
+    
+<div class="detail-item detail-item--middle detail-item__field_email">
+    <div class="detail-item__left">
+        <img src="https://patterns.boston.gov/images/global/icons/icon-email.svg" class="icon icon-email sb-ic" alt="" />
+    </div>
+    
+                    <div>
+        
+                            
+
+        <div class="detail-item__content">
+            <div class="detail-item__body detail-item__body--secondary">
+              <span class="sb-d"> <a href="mailto:smallbiz@boston.gov" title="Have a question, or just need help? You can send an email to smallbiz@boston.gov through the form below."  >smallbiz@boston.gov</a></span>
+            </div>
+        </div>
+
+                    </div>
+        
+    </div>
+
+    </div>
+
+      </li>
+              <li class="list-item sb-i">
+            <div class="field field-name-field-address field-type-address field__items">
+
+    
+<div class="detail-item detail-item__field_address">
+    <div class="detail-item__left">
+        <img src="https://patterns.boston.gov/images/global/icons/icon-location.svg" class="icon icon-location sb-ic" alt="" />
+    </div>
+                        <div>
+                <div class="detail-item__content">
+          <div class="detail-item__body detail-item__body--secondary">
+            <div class="addr addr--s locality-block country-US sb-d" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+              <div itemprop="streetAddress" class="addr-a street-block">
+                1 City Hall Square
+                                  <br /> #500
+                              </div>
+              <div class="addr-l">
+                <span itemprop="addressLocality" class="locality">Boston</span>, <span itemprop="addressRegion" class="state"><span class="administrative-area">MA</span>
+</span> <span itemprop="postalCode" class="postal-code"><span class="postal-code">02201</span>
+</span>
+              </div>
+              <span class="country hidden"><span class="country">United States</span>
+</span>
+            </div>
+          </div>
+        </div>
+                    </div>
+            </div>
+
+    </div>
+
+
+      </li>
+      </ul>
+</div>
+
+            </div>
+          </div>
+
+
+
+</span>
+
+              </div>
+            </li>
+                                      <div class="list-item-wrapper">
+                
+          <li class="si-list-item sb-i">
+      
+<div class="detail-item " class="entity entity-paragraphs-item component-section paragraphs-item-sidebar-item" bos_context_type="Sidebar Item">
+
+   
+   <div class="detail-item__content">
+
+      <div class="detail-item__label sb-d sb-b-np ">
+         
+
+  Greenway food trucks
+
+      </div>
+
+               <div class="detail-item__body sb-b sb-b-np ">
+
+                                       <p>Check the <a href="http://www.rosekennedygreenway.org/visit/food/full-mobile-eats-calendar/">Greenway website</a> information on their schedule.</p>
+
+      
+            
+         </div>
+
+      
+   </div>
+
+</div>
+
+    </li>
+  
+
+              </div>
+                      </ul>
+        </div>
+
+      </div>
+
+  </div>
+
+            <div class="department-components">
+          <div class="department-components" >
+            
+            <div class="paragraphs-items paragraphs-items-field-components paragraphs-items-full paragraphs-items-field-components-full">
+                                              <a class="subnav-anchor" id="food-trucks-map" data-text="Food Trucks Map" href="javascript:void(0)" title="This is an anchor"></a>
+                                
+  <div  class="entity entity-paragraphs-item component-section paragraphs-item-map" bos_context_type="Map">
+
+    <cob-map id="map--239776" modal>
+      <script slot="config" type="application/json">
+        {   "version": "1.0",   "dataSources": [   {   "uid": "trucks",   "icons": {   "markerUrl": "https://patterns.boston.gov/images/global/icons/mapping/food-truck.svg",   "cluster": true   },   "popupHtmlTemplate": "<div style=\"min-width: 280px\"><h3 class=\"h3 m-v300\"><a href=\"{{Link}}\">{{Truck}}</a></h3><div class=\"m-v300\"><p class=\"dl-t\" style=\"margin-top:0\">{{Title}}{{Pinpoint}}</p><br/><br/><div class=\"dl\"}><ul class=\"dl dl--sm\"><li class=\"dl-i\"><span class=\"dl-t\">{{Time}}:</span> <span class=\"dl-d\">{{Hours}}</span></li><li class=\"dl-i\"><span class=\"dl-t\">Day:</span> <span class=\"dl-d\">{{Day}}</span></li><li class=\"dl-i\"><span class=\"dl-t\">Managed by:</span> <span class=\"dl-d\">{{Management}}</span></li></ul></div></div>",   "data": {   "type": "arcgis",   "service": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/food_truck_schedule/FeatureServer",   "layer": 0   },   "legend": {   "label": "Food Truck"   }   }   ],   "filters": [   {   "dataSourceUid": "trucks",   "title": "Day",   "type": "select",   "options": [   {   "title": "Any",   "value": "Any",   "query": "1=1"   },   {   "type": "separator"   },   {   "title": "Monday",   "value": "Monday"   },   {   "title": "Tuesday",   "value": "Tuesday"   },   {   "title": "Wednesday",   "value": "Wednesday"   },   {   "title": "Thursday",   "value": "Thursday"   },   {   "title": "Friday",   "value": "Friday"   },   {   "title": "Saturday",   "value": "Saturday"   },   {   "title": "Sunday",   "value": "Sunday"   }   ],   "queryTemplate": "Day = '{{.}}'",   "default": [   {   "date": "day",   "eq": 0,   "value": "Sunday"   },   {   "date": "day",   "eq": 1,   "value": "Monday"   },   {   "date": "day",   "eq": 2,   "value": "Tuesday"   },   {   "date": "day",   "eq": 3,   "value": "Wednesday"   },   {   "date": "day",   "eq": 4,   "value": "Thursday"   },   {   "date": "day",   "eq": 5,   "value": "Friday"   },   {   "date": "day",   "eq": 6,   "value": "Saturday"   }   ]   },   {   "dataSourceUid": "trucks",   "title": "Truck",   "type": "select",   "options": [   {   "title": "All",   "value": "All",   "query": "1=1"   },   {   "type": "separator"   },   {   "type": "dynamic",   "field": "Truck",   "limitWithFilters": true   }   ],   "queryTemplate": "Truck = '{{.}}'",   "default": "All"   }   ],   "maps": [   {   "uid": "yBHcvxTmQyrK4WhLBxe16",   "title": "Food Trucks",   "instructionsHtml": "",   "latitude": 42.32,   "longitude": -71.1284,   "zoom": 12,   "showZoomControl": true,   "showLegend": true,   "showUserLocation": true,   "addressSearch": {   "title": "",   "autoPopupDataSourceUid": null,   "zoomToResult": true   }   }   ]  }
+      </script>
+    </cob-map>
+
+    <div class="b b--fw">
+
+      
+      
+
+      <div class="ph ph--wc">
+
+        <a href="#map--239776">
+          <div class="ph-p ph-p-m">
+                        <article>
+                      <picture>
+                  <source srcset="/sites/default/files/styles/photo_bleed_a_mobile_1x/public/img/2018/m/map-background-image_1.jpg?itok=d8TjloUH 1x, /sites/default/files/styles/photo_bleed_b_tablet_1x/public/img/2018/m/map-background-image_1.jpg?itok=2s9fRPd6 1.5x, /sites/default/files/styles/photo_bleed_c_desktop_1x/public/img/2018/m/map-background-image_1.jpg?itok=NMoUzlNY 2x" media="(min-width: 0px) and (max-width: 419px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/photo_bleed_b_tablet_1x/public/img/2018/m/map-background-image_1.jpg?itok=2s9fRPd6 1x, /sites/default/files/styles/photo_bleed_c_desktop_1x/public/img/2018/m/map-background-image_1.jpg?itok=NMoUzlNY 1.5x, /sites/default/files/styles/photo_bleed_d_large_1x/public/img/2018/m/map-background-image_1.jpg?itok=VR8H19Y0 2x" media="(min-width: 420px)  and (max-width: 767px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/photo_bleed_c_desktop_1x/public/img/2018/m/map-background-image_1.jpg?itok=NMoUzlNY 1x" media="(min-width: 768px) and (max-width: 1439px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/photo_bleed_d_large_1x/public/img/2018/m/map-background-image_1.jpg?itok=VR8H19Y0 1x" media="(min-width: 1440px) and (max-width: 1919px)" type="image/jpeg"/>
+              <source srcset="/sites/default/files/styles/photo_bleed_e_oversize_1x/public/img/2018/m/map-background-image_1.jpg?itok=1wPhRAWN 1x" media="(min-width: 1920px)" type="image/jpeg"/>
+                    
+      <img src="/sites/default/files/styles/photo_bleed_a_mobile_1x/public/img/2018/m/map-background-image_1.jpg?itok=d8TjloUH" alt="Image for map background image" typeof="foaf:Image" />
+
+  
+  </picture>
+
+
+      
+  </article>
+
+      
+          </div>
+        </a>
+
+        <div class="ph-c p-a600">
+
+          <div class="m-b200">
+            
+    <h2 class="sh-title">Food Trucks Map</h2>
+
+          </div>
+
+                      <div class="t--info m-b200">
+                          Find food trucks near you.
+      
+            </div>
+          
+          <a class="btn" href="#map--239776">
+            Show Map
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+                                              <a class="subnav-anchor" id="locations-by-neighborhood" data-text="Locations by neighborhood" href="javascript:void(0)" title="This is an anchor"></a>
+                                
+<div  class="entity entity-paragraphs-item component-section paragraphs-item-drawers" bos_context_type="Drawers">
+  <div class="b b--g b--fw">
+    <div class="b-c">
+      <div class="sh cl">
+        
+        
+    <h2 class="sh-title">Locations by neighborhood</h2>
+
+                  	<span class="field field-name-field-short-title field-type-text field-type-string component-short-title">
+		Locations by neighborhood
+	</span>
+
+                
+      </div>
+      <div class="section-drawers">
+                    <div  class="entity entity-paragraphs-item component-section paragraphs-item-drawer dr contextual-region" bos_context_type="Drawer">
+
+  <input type="checkbox" id="dr" class="dr-tr a11y--h">
+
+  <label for="dr" class="dr-h">
+
+	  <div class="dr-ic">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+		    <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+	    </svg>
+    </div>
+
+	  <div class="dr-t">    <div class="field field-name-field-title field-type-text field-type-string field-label-hidden field-items">
+                <div>
+        Back Bay
+            </div>
+          </div>
+</div>
+
+	    </label>
+
+	<div class="dr-c">
+                <div class="entity entity-paragraphs-item paragraphs-item-text-one-column component-section squiggle-border-bottom, p-t400 entity entity-paragraphs-item component-section" bos_context_type="Text One Column" about="" typeof="">
+  <div >
+                <h4><a href="https://www.google.com/maps/@42.3505372,-71.0751258,3a,75y,211.94h,88.4t/data=!3m6!1e1!3m4!1sA9mRhzo5OEdY74TN7Sc_kg!2e0!7i16384!8i8192">Clarendon StreeT (By Trinity Church)</a></h4>
+<ul><li>Mondays, 11 - 3 p.m.: <a href="https://cnrguys.com/">Chicken and Rice Guys </a></li>
+<li>Tuesdays, 11 - 3 p.m.:  <a href="https://www.moyzillaboston.com/">Moyzilla</a></li>
+<li>Wednesdays, 11 - 3 p.m.: <a href="https://www.bonetowneats.com/boston-menus/">Daddy’s Bonetown Burgers</a></li>
+<li>Thursdays, 11-3 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+</ul><h4><a href="https://www.google.com/maps/@42.3498916,-71.0781234,3a,75y,164.94h,90.36t/data=!3m6!1e1!3m4!1ssBuMc3ufotMoI3P-h8NkTA!2e0!7i16384!8i8192">Copley Square - Central Library</a></h4>
+<ul><li>Thursdays, 11 - 3 p.m.: <a href="https://cnrguys.com/">Chicken and Rice Guys </a></li>
+<li>Saturdays, 4 - 8 p.m.: Sweet Buble</li>
+</ul>
+      
+  </div>
+</div>
+
+      
+  </div>
+</div>
+
+              <div  class="entity entity-paragraphs-item component-section paragraphs-item-drawer dr contextual-region" bos_context_type="Drawer">
+
+  <input type="checkbox" id="dr--2" class="dr-tr a11y--h">
+
+  <label for="dr--2" class="dr-h">
+
+	  <div class="dr-ic">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+		    <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+	    </svg>
+    </div>
+
+	  <div class="dr-t">    <div class="field field-name-field-title field-type-text field-type-string field-label-hidden field-items">
+                <div>
+        Charlestown
+            </div>
+          </div>
+</div>
+
+	    </label>
+
+	<div class="dr-c">
+                <div class="entity entity-paragraphs-item paragraphs-item-text-one-column component-section squiggle-border-bottom, p-t400 entity entity-paragraphs-item component-section" bos_context_type="Text One Column" about="" typeof="">
+  <div >
+                <h4><a href="https://www.google.com/maps/place/3rd+Ave+%26+13th+St,+Boston,+MA+02129/@42.3776592,-71.0517346,17z/data=!3m1!4b1!4m5!3m4!1s0x89e370f7b142409b:0xebb05ce28cc46990!8m2!3d42.3776592!4d-71.0517346">Navy Yard (3rd Avenue and 13th street)</a></h4>
+<ul><li>Wednesdays, 11 - 3 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+</ul>
+      
+  </div>
+</div>
+
+      
+  </div>
+</div>
+
+              <div  class="entity entity-paragraphs-item component-section paragraphs-item-drawer dr contextual-region" bos_context_type="Drawer">
+
+  <input type="checkbox" id="dr--3" class="dr-tr a11y--h">
+
+  <label for="dr--3" class="dr-h">
+
+	  <div class="dr-ic">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+		    <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+	    </svg>
+    </div>
+
+	  <div class="dr-t">    <div class="field field-name-field-title field-type-text field-type-string field-label-hidden field-items">
+                <div>
+        Downtown
+            </div>
+          </div>
+</div>
+
+	    </label>
+
+	<div class="dr-c">
+                <div class="entity entity-paragraphs-item paragraphs-item-text-one-column component-section squiggle-border-bottom, p-t400 entity entity-paragraphs-item component-section" bos_context_type="Text One Column" about="" typeof="">
+  <div >
+                <h4><a href="https://www.google.com/maps/@42.3597168,-71.0597228,3a,75y,59.41h,81.78t/data=!3m6!1e1!3m4!1shJWtpPJftvO7Pa5BmDc4RA!2e0!7i13312!8i6656">City Hall Plaza, Fisher Park</a></h4>
+<ul><li>Tuesdays, 11 - 3 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+<li>Tuesdays, 11 - 3 p.m.:  <a href="http://www.revelryboston.com/">Revelry</a></li>
+<li>Tuesdays, 4 - 8 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+<li>Wednesdays, 4 - 8 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+<li>Thursdays, 11 - 3 p.m.: <a href="https://nac-truck.com/events-calendar">The NAC Truck</a></li>
+</ul>
+      
+  </div>
+</div>
+
+      
+  </div>
+</div>
+
+              <div  class="entity entity-paragraphs-item component-section paragraphs-item-drawer dr contextual-region" bos_context_type="Drawer">
+
+  <input type="checkbox" id="dr--4" class="dr-tr a11y--h">
+
+  <label for="dr--4" class="dr-h">
+
+	  <div class="dr-ic">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+		    <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+	    </svg>
+    </div>
+
+	  <div class="dr-t">    <div class="field field-name-field-title field-type-text field-type-string field-label-hidden field-items">
+                <div>
+        Fenway-Kenmore
+            </div>
+          </div>
+</div>
+
+	    </label>
+
+	<div class="dr-c">
+                <div class="entity entity-paragraphs-item paragraphs-item-text-one-column component-section squiggle-border-bottom, p-t400 entity entity-paragraphs-item component-section" bos_context_type="Text One Column" about="" typeof="">
+  <div >
+                <h4><a href="https://www.google.com/maps/@42.3493861,-71.102367,3a,75y,148.54h,88.26t/data=!3m6!1e1!3m4!1sGg0_4oGaTRUzLYasQxZfhA!2e0!7i16384!8i8192">BU East (Commonwealth Ave. at Morse Auditorium)</a></h4>
+<ul><li>Wednesdays, 11 - 3 p.m.: <a href="https://zaakifoodtruck.com/">Zaaki </a></li>
+<li>Wednesdays, 4 - 8 p.m.: <a href="https://cnrguys.com/">Chicken and Rice Guys</a></li>
+<li>Thursdays, 11 - 3 p.m.: <a href="https://twitter.com/zinnetruck">Zinnekens</a></li>
+<li>Thursdays, 4 - 8 p.m.: <a href="https://twitter.com/zinnetruck">Zinnekens</a></li>
+</ul>
+      
+  </div>
+</div>
+
+      
+  </div>
+</div>
+
+              <div  class="entity entity-paragraphs-item component-section paragraphs-item-drawer dr contextual-region" bos_context_type="Drawer">
+
+  <input type="checkbox" id="dr--5" class="dr-tr a11y--h">
+
+  <label for="dr--5" class="dr-h">
+
+	  <div class="dr-ic">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+		    <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+	    </svg>
+    </div>
+
+	  <div class="dr-t">    <div class="field field-name-field-title field-type-text field-type-string field-label-hidden field-items">
+                <div>
+        Seaport
+            </div>
+          </div>
+</div>
+
+	    </label>
+
+	<div class="dr-c">
+                <div class="entity entity-paragraphs-item paragraphs-item-text-one-column component-section squiggle-border-bottom, p-t400 entity entity-paragraphs-item component-section" bos_context_type="Text One Column" about="" typeof="">
+  <div >
+                <h4><a href="https://www.google.com/maps/place/62+Northern+Ave,+Boston,+MA+02210/@42.3526799,-71.0474225,17z/data=!3m1!4b1!4m5!3m4!1s0x89e3707ede38d405:0x662b64a667a33c64!8m2!3d42.352676!4d-71.0452338">District Hall (62 Northern Ave)</a></h4>
+<ul><li>Mondays, 11 - 3 p.m.: <a href="https://cnrguys.com/">Chicken and Rice Guys</a></li>
+<li>Wednesdays, 4 - 8 p.m.: <a href="https://twitter.com/KushBySaba">Kush Modern Mediterranean</a></li>
+<li>Thursdays, 4 - 8 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+<li>Fridays, 11 - 3 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+<li>Fridays, 4 - 8 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+<li>Saturdays, 11 - 3 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+<li>Saturdays, 4 - 8 p.m.: <a href="https://www.instagram.com/tacoscalleteco/?hl=en">Tacos Calleteco</a></li>
+</ul>
+      
+  </div>
+</div>
+
+      
+  </div>
+</div>
+
+              <div  class="entity entity-paragraphs-item component-section paragraphs-item-drawer dr contextual-region" bos_context_type="Drawer">
+
+  <input type="checkbox" id="dr--6" class="dr-tr a11y--h">
+
+  <label for="dr--6" class="dr-h">
+
+	  <div class="dr-ic">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-2 8.5 18 25">
+		    <path class="dr-i" d="M16 21L.5 33.2c-.6.5-1.5.4-2.2-.2-.5-.6-.4-1.6.2-2l12.6-10-12.6-10c-.6-.5-.7-1.5-.2-2s1.5-.7 2.2-.2L16 21z"/>
+	    </svg>
+    </div>
+
+	  <div class="dr-t">    <div class="field field-name-field-title field-type-text field-type-string field-label-hidden field-items">
+                <div>
+        West End
+            </div>
+          </div>
+</div>
+
+	    </label>
+
+	<div class="dr-c">
+                <div class="entity entity-paragraphs-item paragraphs-item-text-one-column component-section squiggle-border-bottom, p-t400 entity entity-paragraphs-item component-section" bos_context_type="Text One Column" about="" typeof="">
+  <div >
+                <h4><a href="https://www.google.com/maps/@42.3640521,-71.0683709,3a,75y,22.31h,86.73t/data=!3m7!1e1!3m5!1sWHIXLXLvsG9Y7VS9b5z_xg!2e0!6s%2F%2Fgeo0.ggpht.com%2Fcbk%3Fpanoid%3DWHIXLXLvsG9Y7VS9b5z_xg%26output%3Dthumbnail%26cb_client%3Dmaps_sv.tactile.gps%26thumb%3D2%26w%3D203%26h%3D100%26yaw%3D343.25577%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192">MGH (Blossom Street / Emerson Place)</a></h4>
+<ul><li>Mondays, 11 - 3 p.m.: <a href="https://bonmetruck.com/">Bon Me</a></li>
+<li>Mondays, 11 - 3 p.m.:  <a href="https://www.moyzillaboston.com/">Moyzilla</a></li>
+<li>Wednesday, 11 - 3 p.m.: <a href="http://www.stuffedbypapi.com/">Papi’s Stuffed Sopapillas</a></li>
+<li>Fridays, 11 - 3 p.m.: <a href="https://bonmetruck.com/">Bon Me</a></li>
+<li>Fridays, 11 - 3 p.m.:  <a href="http://www.stuffedbypapi.com/">Papi’s Stuffed Sopapillas</a></li>
+</ul>
+      
+  </div>
+</div>
+
+      
+  </div>
+</div>
+
+      
+      </div>
+    </div>
+  </div>
+</div>
+
+                    </div>
+    
+          </div>
+        </div>
+    
+    
+    
+
+</article>
+
+  
+  
+
+        
+
+      </section>
+    </div>
+  </div>
+  
+  <a href="#content" class="bk_top_btn scrollToTopBtn" id="main-content" data-swiftype-index="false"><img src="/themes/custom/bos_theme/images/back_top_btn.png" alt="Back to top" /></a>
+  <footer class="ft">
+      <div class="ft-c ft-ite">
+        <nav role="navigation" aria-labelledby="block-footermenu-menu" id="block-footermenu" data-block-plugin-id="menu_block:menu-footer-menu">
+            
+  <div class="visually-hidden" id="block-footermenu-menu">Footer menu</div>
+  
+
+        
+                            <ul class="ft-ll ft-ite-links">
+                            <li class="ft-ll-i ft-ll-a">
+                <a href="/departments/innovation-and-technology/terms-use-and-privacy-policy" data-drupal-link-system-path="node/31526">Privacy Policy</a>
+                            </li>
+                    <li class="ft-ll-i ft-ll-a">
+                <a href="/departments/mayors-office/contact-boston-city-hall" data-drupal-link-system-path="node/1806">Contact us</a>
+                            </li>
+                    <li class="ft-ll-i ft-ll-a">
+                <a href="https://www.boston.gov/career-center">Jobs and careers</a>
+                            </li>
+                    <li class="ft-ll-i ft-ll-a">
+                <a href="/departments/emergency-management/city-boston-alerts-and-notifications" data-drupal-link-system-path="node/31131">Alerts</a>
+                            </li>
+                    <li class="ft-ll-i ft-ll-a">
+                <a href="https://bostonma.govqa.us/WEBAPP/_rs/(S(den310hnrpqz2rzh5lgbgsby))/SupportHome.aspx">Public records</a>
+                            </li>
+                </ul>
+    
+
+
+  </nav>
+
+        <ul class="ft-ll ft-ite-311">
+          <li class="ft-ll-i"><a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow">
+              <span class="ft-ll-311">BOS:311</span>
+              <span class="tablet--hidden"> - </span>Report an issue
+            </a>
+          </li>
+        </ul>
+      </div>
+  </footer>
+
+</div>
+
+
+
+
+  </div>
+
+    
+
+    <script id="contactFormTemplate" type="text/x-template">
+    <div class="md">
+        <div class="md-c">
+            <button class="md-cb">Close</button>
+            <div class="mb-b p-a300 p-a600--xl">
+                <div class="sh m-b500">
+                    <div class="sh-title">Contact Us</div>
+                </div>
+                <div>
+                    <div id="contactMessage" class="t--info m-b500">Have a question, or just need help? You can send an email through the form below.</div>
+                    <form id="contactForm" action="/rest/email_session/contactform" method="POST">
+                        <input id="contactFormToAddress" name="email[to_address]" type="hidden" value="">
+                        <input id="contactFormURL" name="email[url]" type="hidden" value="">
+                        <input id="contactFormBrowser" name="email[browser]" type="hidden" value="">
+                        <div class="fs">
+                            <div class="fs-c">
+                                <div class="txt m-b300">
+                                    <label for="contact-name" class="txt-l txt-l--mt000">Full Name</label>
+                                    <input id="contact-name" name="email[name]" type="text" class="txt-f bos-contact-name" size="10" value="">
+                                </div>
+                                <div class="txt m-b300">
+                                    <label for="contact-address" class="txt-l txt-l--mt000">Email Address</label>
+                                    <input id="contact-address" name="email[from_address]" type="text" placeholder="email@address.com" class="txt-f bos-contact-email" value="">
+                                </div>
+                                <div class="txt m-b300">
+                                    <label for="contact-subject" class="txt-l txt-l--mt000">Subject</label>
+                                    <input id="contact-subject" name="email[subject]" type="text" class="txt-f bos-contact-subject" size="10" value="">
+                                </div>
+                                <div class="txt m-b300">
+                                    <label for="contact-message" class="txt-l txt-l--mt000">Message</label>
+                                    <textarea id="contact-message" name="email[message]" type="text" class="txt-f bos-contact-message" rows="10"></textarea>
+                                </div>
+                                <div class="txt visually-hidden">
+                                    <label for="email[honey]" class="txt-l">Gotcha</label>
+                                    <input name="email[honey]" id="email[honey]" type="text" value="" placeholder="Honey">
+                                    <input id="contact-token" name="email[token_session]" value="">
+                                </div>
+                            </div>
+                            <div class="bc bc--r p-t500">
+                                <button id="contactFormSubmitBtn" type="submit" class="btn btn--700" name="Send Message">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","scriptPath":null,"pathPrefix":"","currentPath":"node\/21311","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"ajaxPageState":{"libraries":"bos_bibblio\/bos_bibblio_css,bos_bibblio\/bos_bibblio_js,bos_components\/field.style,bos_iframe\/bos_iframe_js,bos_map\/map,bos_text\/bos_text_css,bos_theme\/context_link,bos_theme\/fleet-components.patterns,bos_theme\/global-styling.always,bos_theme\/global-styling.patterns,bos_theme\/page.assets,bos_theme\/page.inpage_menu,bos_translate\/bos_translate_css,bos_translate\/bos_translate_js,core\/picturefill,node_site_alert\/alert.call,paragraphs\/drupal.paragraphs.unpublished,poll\/drupal.poll-links,system\/base,views\/views.module,webform\/webform.dialog","theme":"bos_theme","theme_token":null},"ajaxTrustedUrl":[],"webform":{"dialog":{"options":{"narrow":{"title":"Narrow","width":600},"normal":{"title":"Normal","width":800},"wide":{"title":"Wide","width":1000}},"entity_type":"node","entity_id":"21311"}},"bos_bibblio":{"bos_bibblio_js":{"node_id":"21311"}},"ajax":[],"user":{"uid":0,"permissionsHash":"5c6fc548117ede7fa3314ac13df14b55bc0b28b9de954c592bfff882b443ed32"}}</script>
+<script src="/sites/default/files/js/js_bF2jP15IYkq-JTwMMQgJZiRf8RR1Mf5lHSy60A6jVkU.js"></script>
+<script src="https://patterns.boston.gov/web-components/fleetcomponents.js"></script>
+<script src="/themes/custom/bos_theme/js/inpage_menu.boston.js?re1lnq" id="inpage_menu_script"></script>
+<script src="/themes/custom/bos_theme/js/bos_theme.context_menu_link.js?re1lnq" id="bos_theme_context_menu_link"></script>
+<script src="/themes/custom/bos_theme/js/bos_theme.contextual_toolbar_tab.js?re1lnq" id="bos_core_contextual_toolbar_tab"></script>
+<script src="/sites/default/files/js/js_UMV2RD5H4QKNb-Ww_ZKMaORePoHH24uRnAL1YzwaoVA.js"></script>
+<script src="/themes/custom/bos_theme/js/messages.boston.js?re1lnq" id="messages_script"></script>
+<script src="/themes/custom/bos_theme/js/cob_ckeditor.boston.js?re1lnq" id="cob_ckeditor_script"></script>
+
+<!--[if IE 9]>
+<script src="/sites/default/files/js/js_VazMdB7n5VPCNUi7EMTSESLbwkO6VhD4Na_uxRUyHh4.js"></script>
+<![endif]-->
+<script src="/sites/default/files/js/js_o_gS4r3RipX8z_Y2B-q5M9iOfiI_eBjXfmWdGLIBvCI.js"></script>
+<script src="https://patterns.boston.gov/scripts/all.js"></script>
+
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"06206dff86","applicationID":"449797348","transactionName":"M1ZQYkVZXRUCARBaDgocc1VDUVwITCYWRhEFX25YWFxWOiANCkcTC19eU0VkfQkHBzJaBBNwXVhDSlwKDwcWHl8SWldB","queueTime":0,"applicationTime":998,"atts":"HxFTFA1DThs=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
+
