@@ -42,6 +42,7 @@ func New(env string) *router.Router[*Action] {
 
 	r.Use(rescue.Middleware(func(a router.Action, err error) {
 		fmt.Println(err)
+		a.Write([]byte("Oops, Something went wrong!"))
 	}))
 
 	r.Use(static.Middleware(static.Config{

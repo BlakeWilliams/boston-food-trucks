@@ -16,7 +16,12 @@ func main() {
 
 	app := server.New(env)
 
+	addr := os.Getenv("ADDR")
+	if addr == "" {
+		addr = ":9090"
+	}
+
 	logger := log.Default()
-	logger.Println("Listening on http://localhost:9090")
-	http.ListenAndServe(":9090", app)
+	logger.Printf("Listening on http://localhost:%s", addr)
+	http.ListenAndServe(addr, app)
 }
