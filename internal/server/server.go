@@ -77,9 +77,11 @@ func New(env string) *router.Router[*Action] {
 
 			// Backfill seaport location because the food truck page refuses to be consistent
 			if truck.Neighborhood == "Seaport" {
-				truck.LatLng = bostontrucks.LatLng{Lat: 42.352676, Lng: -71.0452338}
+				truck.Lat = 42.352676
+				truck.Lng = -71.0452338
 			} else if truck.Neighborhood == "Charlestown" {
-				truck.LatLng = bostontrucks.LatLng{Lat: 42.3776592, Lng: -71.0517346}
+				truck.Lat = 42.3776592
+				truck.Lng = -71.0517346
 			}
 			trucksByLocation[location] = append(trucksByLocation[location], truck)
 		}

@@ -61,7 +61,7 @@ func parseBostonTrucksHTML(body io.Reader) ([]Truck, error) {
 				return
 			}
 
-			latLng, err := parseLatLng(href)
+			lat, lng, err := parseLatLng(href)
 			if err != nil {
 				return
 			}
@@ -83,7 +83,8 @@ func parseBostonTrucksHTML(body io.Reader) ([]Truck, error) {
 				if _, ok := truckBuilder[name]; !ok {
 					truckBuilder[name] = &Truck{
 						Neighborhood: neighborhood,
-						LatLng:       latLng,
+						Lat:          lat,
+						Lng:          lng,
 						Location:     strings.Replace(location.Text(), "StreeT", "Street", 1), // fix for mistake on food truck site
 						Name:         name,
 						Schedule:     make(map[string]string),
@@ -109,21 +110,21 @@ func parseBostonTrucksHTML(body io.Reader) ([]Truck, error) {
 	return trucks, nil
 }
 
-func parseLatLng(mapURL string) (LatLng, error) {
+func parseLatLng(mapURL string) (float64, float64, error) {
 	match := latLngRegexp.FindStringSubmatch(mapURL)
 
 	if len(match) != 3 {
-		return LatLng{}, nil
+		return 0, 0, nil
 	}
 
 	lat, err := strconv.ParseFloat(match[1], 64)
 	if err != nil {
-		return LatLng{}, fmt.Errorf("could not parse %s: %w", match[1], err)
+		return 0, 0, fmt.Errorf("could not parse %s: %w", match[1], err)
 	}
 	lng, err := strconv.ParseFloat(match[2], 64)
 	if err != nil {
-		return LatLng{}, fmt.Errorf("could not parse %s: %w", match[2], err)
+		return 0, 0, fmt.Errorf("could not parse %s: %w", match[2], err)
 	}
 
-	return LatLng{Lat: lat, Lng: lng}, nil
+	return lat, lng, nil
 }

@@ -13,7 +13,7 @@ document.addEventListener(
 
     for (const key of Object.keys(truckData)) {
       const trucks = truckData[key];
-      const latlng = [trucks[0].LatLng["Lng"], trucks[0].LatLng["Lat"]];
+      const latlng = [trucks[0].Lng, trucks[0].Lat];
 
       const marker = new mapboxgl.Marker({ draggable: false })
         .setLngLat(latlng)
