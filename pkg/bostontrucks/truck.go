@@ -1,5 +1,6 @@
 package bostontrucks
 
+// Truck represents the details of a food truck and it's location schedule.
 type Truck struct {
 	Name         string
 	Neighborhood string
