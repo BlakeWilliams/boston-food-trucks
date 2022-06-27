@@ -14,14 +14,14 @@ func main() {
 		env = server.EnvProd
 	}
 
-	app := server.New(env)
+	logger := log.Default()
+	app := server.New(env, logger)
 
 	addr := os.Getenv("ADDR")
 	if addr == "" {
 		addr = ":9090"
 	}
 
-	logger := log.Default()
 	logger.Printf("Listening on http://localhost:%s", addr)
 	http.ListenAndServe(addr, app)
 }

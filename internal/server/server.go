@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"html/template"
+	"log"
+	"net/http"
 	"os"
 	"path/filepath"
 	"sort"
@@ -14,6 +16,7 @@ import (
 	"github.com/blakewilliams/boston-foodie/pkg/static"
 	"github.com/blakewilliams/medium/pkg/router"
 	"github.com/blakewilliams/medium/pkg/router/rescue"
+	"github.com/blakewilliams/medium/pkg/tell"
 	"github.com/blakewilliams/medium/pkg/view"
 )
 
@@ -35,10 +38,17 @@ func (a *Action) Render(name string, params map[string]any) {
 	}
 }
 
-func New(env string) *router.Router[*Action] {
+func New(env string, logger *log.Logger) *router.Router[*Action] {
+	instrumenter := tell.New()
+	instrumenter.Subscribe("router.ServeHTTP", func(e tell.Event) {
+		req := e.Payload["request"].(http.Request)
+		logger.Printf("%s %s - %v\n", req.Method, req.URL.Path, time.Now().Sub(e.Start))
+	})
+
 	r := router.New(func(a router.Action) *Action {
 		return &Action{Action: a, renderer: createRenderer(env)}
 	})
+	r.Notifier = instrumenter
 
 	r.Use(rescue.Middleware(func(a router.Action, err error) {
 		fmt.Println(err)
