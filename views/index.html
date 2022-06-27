@@ -13,15 +13,10 @@
 </head>
 
 <body class="h-full">
-  <div class="flex h-full">
-    <a href="https://github.com/blakewilliams/boston-food-trucks"><img loading="lazy" width="149" height="149"
-        src="https://github.blog/wp-content/uploads/2008/12/forkme_left_darkblue_121621.png?resize=149%2C149"
-        class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"
-        style="z-index: 9999; position: fixed;"></a>
-
+  <div class="flex h-full flex-col md:flex-row">
     <div class="flex-1" id="map" style="flex: 2.5;"></div>
 
-    <div class="flex-1 border-l border-solid border-gray-300 overflow-scroll">
+    <div class="flex-1 border-t md:border-t-0 md:border-l border-solid border-gray-300 overflow-scroll">
       {{$days := .Days}}
       {{$today := .Today}}
       {{range $location, $trucks := .Trucks}}
@@ -32,8 +27,8 @@
         </a>
 
         {{range $_, $truck := $trucks}}
-        <div class="p-3 border-b border-gray-200 flex flex-wrap">
-          <span class="flex-1 {{if (index $truck.Schedule $today)}}{{else}}text-gray-400{{end}} mr-3">
+        <div class="p-3 border-b border-gray-200 flex flex-wrap items-center">
+          <span class="flex-1 {{if (index $truck.Schedule $today)}}{{else}}text-gray-400{{end}} mr-4">
             {{$truck.Name}}
           </span>
 
