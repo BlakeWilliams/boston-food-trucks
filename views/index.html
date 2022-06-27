@@ -1,57 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tailwindcss.com"></script>
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
-    <title>Boston Food Trucks</title>
-  </head>
-  <body class="h-full">
-    <div class="flex h-full">
-      <div class="flex-1" id="map" style="flex: 2.5;"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.tailwindcss.com"></script>
 
-      <div class="flex-1 border-l border-solid border-gray-300 overflow-scroll">
-        {{$days := .Days}}
-        {{$today := .Today}}
-        {{range $location, $trucks := .Trucks}}
-          <div>
-            <a href="#" class="text-xl p-3 bg-gray-100 block border-b border-solid border-gray-200 hover:underline" data-location="{{$location}}">
-              {{$location}}
-            </a>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+  <title>Boston Food Trucks</title>
+</head>
 
-            {{range $_, $truck := $trucks}}
-              <div class="p-3 border-b border-gray-200 flex flex-wrap">
-                <span class="flex-1 {{if (index $truck.Schedule $today)}}{{else}}text-gray-400{{end}} mr-3">
-                  {{$truck.Name}}
-                </span>
+<body class="h-full">
+  <div class="flex h-full">
+    <a href="https://github.com/blakewilliams/boston-food-trucks"><img loading="lazy" width="149" height="149"
+        src="https://github.blog/wp-content/uploads/2008/12/forkme_left_darkblue_121621.png?resize=149%2C149"
+        class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"
+        style="z-index: 9999; position: fixed;"></a>
 
-                <span class="text-gray-600">
-                  {{range $_, $day := $days}}
-                    <span class="pr-1 {{if (index $truck.Schedule $day)}}font-bold text-grey-700{{else}}text-gray-400{{end}}">{{ShortDay $day}}</span>
-                  {{end}}
-                </span>
-              </div>
+    <div class="flex-1" id="map" style="flex: 2.5;"></div>
+
+    <div class="flex-1 border-l border-solid border-gray-300 overflow-scroll">
+      {{$days := .Days}}
+      {{$today := .Today}}
+      {{range $location, $trucks := .Trucks}}
+      <div>
+        <a href="#" class="text-xl p-3 bg-gray-100 block border-b border-solid border-gray-200 hover:underline"
+          data-location="{{$location}}">
+          {{$location}}
+        </a>
+
+        {{range $_, $truck := $trucks}}
+        <div class="p-3 border-b border-gray-200 flex flex-wrap">
+          <span class="flex-1 {{if (index $truck.Schedule $today)}}{{else}}text-gray-400{{end}} mr-3">
+            {{$truck.Name}}
+          </span>
+
+          <span class="text-gray-600">
+            {{range $_, $day := $days}}
+            <span
+              class="pr-1 {{if (index $truck.Schedule $day)}}font-bold text-grey-700{{else}}text-gray-400{{end}}">{{ShortDay
+              $day}}</span>
             {{end}}
-          </div>
+          </span>
+        </div>
         {{end}}
       </div>
+      {{end}}
     </div>
+  </div>
 
-    <script src="/static/app.js"></script>
+  <script src="/static/app.js"></script>
 
-    <script>
-      mapboxgl.accessToken = "{{.MapboxAPIKey}}";
-      window.truckData = {{.TrucksJSON}};
-    </script>
+  <script>
+    mapboxgl.accessToken = "{{.MapboxAPIKey}}";
+    window.truckData = {{.TrucksJSON }};
+  </script>
 
-    <style>
-      .mapboxgl-popup-close-button {
-        padding: 6px 10px;
-      }
-    </style>
-  </body>
+  <style>
+    .mapboxgl-popup-close-button {
+      padding: 6px 10px;
+    }
+  </style>
+</body>
+
 </html>
