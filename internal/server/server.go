@@ -2,7 +2,6 @@ package server
 
 import (
 	"encoding/json"
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -51,7 +50,7 @@ func New(env string, logger *log.Logger) *router.Router[*Action] {
 	r.Notifier = instrumenter
 
 	r.Use(rescue.Middleware(func(a router.Action, err error) {
-		fmt.Println(err)
+		logger.Printf("500 - %v", err)
 		a.Write([]byte("Oops, Something went wrong!"))
 	}))
 
