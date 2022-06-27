@@ -16,26 +16,29 @@
   <div class="flex h-full flex-col md:flex-row">
     <div class="flex-1" id="map" style="flex: 2.5;"></div>
 
-    <div class="flex-1 border-t md:border-t-0 md:border-l border-solid border-gray-300 overflow-scroll">
+    <div
+      class="flex-1 border-t md:border-t-0 md:border-l border-solid border-gray-300 dark:border-gray-700 overflow-scroll">
       {{$days := .Days}}
       {{$today := .Today}}
       {{range $location, $trucks := .Trucks}}
       <div>
-        <a href="#" class="text-xl p-3 bg-gray-100 block border-b border-solid border-gray-200 hover:underline"
+        <a href="#"
+          class="text-xl p-3 bg-gray-100 dark:bg-gray-900 dark:text-gray-300 block border-b border-solid border-gray-200 dark:border-gray-800 hover:underline"
           data-location="{{$location}}">
           {{$location}}
         </a>
 
         {{range $_, $truck := $trucks}}
-        <div class="p-3 border-b border-gray-200 flex flex-wrap items-center">
-          <span class="flex-1 {{if (index $truck.Schedule $today)}}{{else}}text-gray-400{{end}} mr-4">
+        <div class="p-3 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex flex-wrap items-center">
+          <span
+            class="flex-1 {{if (index $truck.Schedule $today)}}dark:text-gray-300{{else}}text-gray-400 dark:text-gray-500{{end}} mr-4">
             {{$truck.Name}}
           </span>
 
           <span class="text-gray-600">
             {{range $_, $day := $days}}
             <span
-              class="pr-1 {{if (index $truck.Schedule $day)}}font-bold text-grey-700{{else}}text-gray-400{{end}}">{{ShortDay
+              class="pr-1 {{if (index $truck.Schedule $day)}}font-bold text-grey-700 dark:text-gray-300{{else}}text-gray-400 dark:text-gray-500{{end}}">{{ShortDay
               $day}}</span>
             {{end}}
           </span>

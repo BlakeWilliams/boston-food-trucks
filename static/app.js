@@ -10,6 +10,9 @@ document.addEventListener(
       style: "mapbox://styles/mapbox/streets-v11",
       center: [-71.0675, 42.3555],
       zoom: 14,
+      style: window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "mapbox://styles/mapbox/dark-v10"
+        : "mapbox://styles/mapbox/streets-v11",
     });
 
     for (const key of Object.keys(truckData)) {
