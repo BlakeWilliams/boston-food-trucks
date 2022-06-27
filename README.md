@@ -1,6 +1,6 @@
 # Boston Food Trucks
 
-A simple Go application that fetches and displays the current food trucks in the Boston area.
+Weekend project to consolidate Boston food truck schedules/locations into a single place.
 
 See the live site: https://boston-food-trucks.onrender.com/
 
