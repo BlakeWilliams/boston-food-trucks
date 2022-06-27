@@ -1,4 +1,5 @@
 const today = new Date().toLocaleDateString(undefined, { weekday: "long" });
+
 const allMarkers = [];
 let map;
 
@@ -15,26 +16,46 @@ document.addEventListener(
         : "mapbox://styles/mapbox/streets-v11",
     });
 
+    const mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+
     for (const key of Object.keys(truckData)) {
       const trucks = truckData[key];
       const latlng = [trucks[0].Lng, trucks[0].Lat];
 
-      const marker = new mapboxgl.Marker({ draggable: false })
-        .setLngLat(latlng)
-        .addTo(map);
-      allMarkers.push(marker);
-
-      const link = document.querySelector(`[data-location="${key}"]`);
-      link.addEventListener("click", () => {
-        onLocationClick(marker, latlng);
-      });
-
-      const popup = createPopup(trucks);
-      marker.setPopup(popup);
+      if (trucks[0].Lng == 0) {
+        console.log(trucks[0]);
+        mapboxClient.geocoding
+          .forwardGeocode({
+            query: trucks[0].MapLocation,
+            autocomplete: false,
+            limit: 1,
+          })
+          .send()
+          .then((response) => {
+            createMarker(map, key, response.body.features[0].center, trucks);
+          });
+      } else {
+        createMarker(map, key, latlng, trucks);
+      }
     }
   },
   false
 );
+
+function createMarker(map, key, latlng, trucks) {
+  const marker = new mapboxgl.Marker({ draggable: false })
+    .setLngLat(latlng)
+    .addTo(map);
+  allMarkers.push(marker);
+
+  const link = document.querySelector(`[data-location="${key}"]`);
+  link.addEventListener("click", () => {
+    onLocationClick(marker, latlng);
+  });
+
+  const popup = createPopup(trucks);
+  marker.setPopup(popup);
+}
 
 function createPopup(trucks) {
   const trucksAvailableToday = trucks.filter(
@@ -47,7 +68,7 @@ function createPopup(trucks) {
   let popupHTML = `<div class="text-gray-800">`;
 
   if (trucksAvailableToday.length > 0) {
-    popupHTML += textForTrucks("Unavailable", trucksAvailableToday);
+    popupHTML += textForTrucks("Available", trucksAvailableToday);
   }
 
   if (trucksNotAvailableToday.length > 0) {

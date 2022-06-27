@@ -6,6 +6,7 @@ type Truck struct {
 	Neighborhood string
 	Location     string
 	Schedule     map[string]string
+	MapLocation  string
 	Lat          float64
 	Lng          float64
 	URL          string

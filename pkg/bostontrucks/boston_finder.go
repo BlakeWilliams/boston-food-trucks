@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"regexp"
 	"strconv"
 	"strings"
@@ -17,6 +18,7 @@ var truckDetailsRegexp = regexp.MustCompile(`(.*?),\s+(.*?):[\s*| ]*(.*)`)
 var latLngRegexp = regexp.MustCompile(`maps/@(-?[0-9.]+),(-?[0-9.]+),`)
 
 const bostonScheduleURL = "https://www.boston.gov/departments/small-business-development/city-boston-food-trucks-schedule"
+const deweyScheduleURL = "https://www.rosekennedygreenway.org/wp-admin/admin-ajax.php?action=rkgw_print_food_trucks"
 
 // BostonFinder is used to find structs provided by the boston.gov website
 type BostonFinder struct{}
@@ -37,7 +39,27 @@ func (*BostonFinder) Trucks() ([]Truck, error) {
 		return nil, fmt.Errorf("could not fetch trucks, received non-200 response code %d", res.StatusCode)
 	}
 
-	return parseBostonTrucksHTML(res.Body)
+	bostonTrucks, err := parseBostonTrucksHTML(res.Body)
+	if err != nil {
+		return nil, fmt.Errorf("could not parse boston trucks: %w", err)
+	}
+
+	data := url.Values{}
+	data.Add("post_id", "632")
+	data.Add("day", "all")
+
+	res, err = http.Post(deweyScheduleURL, "application/x-www-form-urlencoded", strings.NewReader(data.Encode()))
+
+	if err != nil {
+		return nil, fmt.Errorf("could not fetch dewey trucks: %w", err)
+	}
+
+	deweyTrucks, err := parseDeweyTrucksHTML(res.Body)
+	if err != nil {
+		return nil, fmt.Errorf("could not parse dewey trucks: %w", err)
+	}
+
+	return append(bostonTrucks, deweyTrucks...), nil
 }
 
 func parseBostonTrucksHTML(body io.Reader) ([]Truck, error) {
@@ -127,4 +149,65 @@ func parseLatLng(mapURL string) (float64, float64, error) {
 	}
 
 	return lat, lng, nil
+}
+
+var dayRegex = regexp.MustCompile(`(?m).*?(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday).*`)
+var locationRegex = regexp.MustCompile(`.*destination=(.*?)$|\/|&|.*place\/(.*?)\/.*`)
+
+func parseDeweyTrucksHTML(body io.Reader) ([]Truck, error) {
+	doc, err := goquery.NewDocumentFromReader(body)
+	if err != nil {
+		return nil, fmt.Errorf("could not parse foodtruck page: %w", err)
+	}
+
+	trucks := make(map[string]Truck, 0)
+
+	doc.Find(".u-pbxsSm").Each(func(i int, s *goquery.Selection) {
+		dayOfWeek := s.Find(".c-copy--date-primary").Text()
+		dayOfWeekMatches := dayRegex.FindStringSubmatch(dayOfWeek)
+
+		if len(dayOfWeekMatches) != 2 {
+			return
+		}
+		dayOfWeek = strings.TrimSpace(dayOfWeekMatches[1])
+
+		s.Find(".c-food-truck__loc").Each(func(i int, s *goquery.Selection) {
+			locationName := strings.TrimSpace(s.Find("h2").Text())
+			mapLocation, _ := s.Find("h4 a").Attr("href")
+
+			if matches := locationRegex.FindStringSubmatch(mapLocation); len(matches) > 2 {
+				if matches[1] != "" {
+					mapLocation = matches[1]
+				} else {
+					mapLocation = matches[2]
+				}
+
+				mapLocation = strings.Replace(mapLocation, "+", " ", -1)
+			}
+
+			s.Next().Find("li a").Each(func(i int, s *goquery.Selection) {
+				name := strings.TrimSpace(s.Text())
+
+				if _, ok := trucks[locationName+name]; !ok {
+					trucks[locationName+name] = Truck{
+						Neighborhood: "Downtown",
+						Location:     locationName,
+						Name:         name,
+						Schedule:     make(map[string]string),
+						MapLocation:  mapLocation,
+					}
+				}
+
+				trucks[locationName+name].Schedule[dayOfWeek] = "N/A"
+			})
+		})
+
+	})
+
+	truckSlice := make([]Truck, 0, len(trucks))
+	for _, truck := range trucks {
+		truckSlice = append(truckSlice, truck)
+	}
+
+	return truckSlice, nil
 }
