@@ -23,10 +23,9 @@ document.addEventListener(
       const latlng = [trucks[0].Lng, trucks[0].Lat];
 
       if (trucks[0].Lng == 0) {
-        console.log(trucks[0]);
         mapboxClient.geocoding
           .forwardGeocode({
-            query: trucks[0].MapLocation,
+            query: trucks[0].MapLocation + " Boston, MA",
             autocomplete: false,
             limit: 1,
           })
